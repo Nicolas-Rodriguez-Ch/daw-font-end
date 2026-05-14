@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-steel: #516d86;
+    --color-sage: #84a697;
+    --color-cream: #f0edce;
+    --color-sky: #badde8;
+    --color-periwinkle: #8d95c4;
+  }
+}
