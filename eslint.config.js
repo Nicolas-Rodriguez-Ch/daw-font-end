@@ -24,13 +24,7 @@ export default defineConfig([
       'unused-imports': unusedImports,
     },
     rules: {
-      'prettier/prettier': [
-        'warn',
-        {
-          singleQuote: true,
-          semi: true,
-        },
-      ],
+      'prettier/prettier': 'warn',
 
       'unused-imports/no-unused-imports': 'warn',
 
