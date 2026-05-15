@@ -23,9 +23,7 @@ export const ROUTES: AppRoute[] = [
 ] as const;
 
 export const ROUTE_PATHS = {
-  HOME: '/',
-  VEHICLES: 'vehicles',
-  VEHICLE_DETAIL: (id: string) => `vehicles/${id}`,
-  REGISTER: 'admin/register',
-  UPDATE_VEHICLE: (id: string) => `admin/update/:${id}`,
+  Home: '/',
+  Vehicles: 'vehicles',
+  Register: 'admin/register',
 } as const;
