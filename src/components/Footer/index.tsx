@@ -1,24 +1,38 @@
 import { FaGithubSquare } from 'react-icons/fa';
 import { Link } from 'react-router';
 
+import TextCustom from '../TextCustom';
+
 const Footer = () => {
   return (
-    <div className='bg-steel-700 text-periwinkle-200 p-2 md:p-4 flex flex-row md:justify-around gap-4 md:gap-8 md:text-2xl'>
-      <span className='p-2 md:p-4'>Web App Development Project</span>
-      <div className='md:flex md:flex-row'>
-        <span className='p-2 md:p-4 flex flex-row gap-2 md:gap-4 justify-center'>Contact us:</span>
+    <div className='bg-steel-700 text-periwinkle-200 p-2 md:p-4 flex flex-col items-center md:flex-row md:justify-around md:items-center md:gap-8'>
+      <span className='p-2 md:p-4'>
+        <TextCustom text='Web App Development Project' variant='regular' />
+      </span>
+
+      <Link
+        to='https://github.com/Nicolas-Rodriguez-Ch/daw-font-end'
+        className='hidden md:block hover:text-periwinkle-100 hover:underline underline-offset-4 transition-colors'
+      >
+        <TextCustom text='Project Repo' variant='regular' />
+      </Link>
+
+      <div className='flex flex-col items-center md:flex-row md:items-center'>
+        <TextCustom text='Contact us:' variant='regular' className='p-2 md:p-4' />
         <div className='flex flex-row md:gap-2'>
           <Link
             to='https://github.com/Koervege'
-            className='p-2 md:p-4 flex flex-row gap-2 md:gap-4 align-middle'
+            className='p-2 md:p-4 flex flex-row items-center gap-2 md:gap-4 hover:text-periwinkle-100 transition-colors'
           >
-            Carlos' Github: <FaGithubSquare size={45} />
+            <TextCustom text="Carlos' Github:" variant='small' />
+            <FaGithubSquare size={45} />
           </Link>
           <Link
             to='https://github.com/Nicolas-Rodriguez-Ch'
-            className='p-2 md:p-4 flex flex-row gap-2 md:gap-4 align-middle'
+            className='p-2 md:p-4 flex flex-row items-center gap-2 md:gap-4 hover:text-periwinkle-100 transition-colors'
           >
-            Nicolás' Github: <FaGithubSquare size={45} />
+            <TextCustom text="Nicolás' Github:" variant='small' />
+            <FaGithubSquare size={45} />
           </Link>
         </div>
       </div>
