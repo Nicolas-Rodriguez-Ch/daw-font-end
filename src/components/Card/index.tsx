@@ -3,7 +3,6 @@ import TextCustom from '../TextCustom';
 import type { CardProps } from './types';
 
 const Card = ({ primaryButton, secondaryButton, vehicle }: CardProps) => {
-  console.log('🚀 ~ Card ~ Vehicle:', vehicle);
   const hasButtons = primaryButton ?? secondaryButton;
 
   return (
@@ -28,7 +27,7 @@ const Card = ({ primaryButton, secondaryButton, vehicle }: CardProps) => {
           <div className='h-px bg-steel-600' />
           <div
             className={`flex flex-col md:flex-row gap-2 md:gap-3 ${
-              primaryButton && secondaryButton ? 'md:justify-between' : ''
+              primaryButton && secondaryButton ? 'md:justify-between' : 'md:justify-center'
             }`}
           >
             {primaryButton && (
