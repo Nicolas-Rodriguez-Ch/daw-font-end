@@ -1,6 +1,8 @@
+import type { ElementType } from 'react';
+
 import type { TextCustomProps } from './type';
 
-const variantMap: Record<TextCustomProps['variant'], React.ElementType> = {
+const variantMap: Record<TextCustomProps['variant'], ElementType> = {
   heading: 'h1',
   regular: 'p',
   small: 'small',

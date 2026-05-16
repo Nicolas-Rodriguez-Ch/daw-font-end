@@ -27,9 +27,10 @@ const variantStyles: Record<string, string> = {
   ].join(' '),
 };
 
-const Button = ({ text, variant, callback, disabled = false }: ButtonProps) => {
+const Button = ({ text, variant, disabled = false, type = 'button', callback }: ButtonProps) => {
   return (
     <button
+      type={type}
       onClick={callback}
       disabled={disabled}
       className={[
