@@ -5,4 +5,4 @@ export interface ButtonProps {
   disabled?: boolean;
 }
 
-type ButtonVariant = 'primary' | 'secondary' | 'muted';
+export type ButtonVariant = 'primary' | 'secondary' | 'muted';
