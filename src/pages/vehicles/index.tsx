@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Select from '@/components/Select';
+import { Input, Select } from '@/components';
 
 const Vehicles = () => {
   const [test, setTest] = useState('');
@@ -19,6 +19,14 @@ const Vehicles = () => {
         }}
         value={test}
         placeholder='placeholder'
+        error={test}
+      />
+      <Input
+        id='testinput'
+        label='testinput'
+        placeholder='test input'
+        value={test}
+        onChange={(e) => setTest(e)}
         error={test}
       />
     </>

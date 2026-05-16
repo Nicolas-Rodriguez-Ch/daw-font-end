@@ -61,7 +61,9 @@ const Select = ({
           </svg>
         </div>
       </div>
-      {error && <TextCustom text={`* ${error}`} variant='small' className='text-cream-500' />}
+      {error && (
+        <TextCustom text={`* ${error}`} variant='small' className='text-cream-500 font-bold' />
+      )}
     </div>
   );
 };
