@@ -9,7 +9,7 @@ const Card = ({ primaryButton, secondaryButton, vehicle }: CardProps) => {
     <div className='bg-steel-800 border border-steel-600 rounded-lg p-4 md:p-6 flex flex-col gap-4 w-full'>
       <div className='flex flex-col gap-3'>
         <div className='flex flex-row items-start justify-between gap-2'>
-          <TextCustom text={vehicle.model} variant='heading' />
+          <TextCustom text={vehicle.model} variant='heading' className='text-skyblue-500' />
           <span
             className={`text-xs md:text-sm px-2 py-1 rounded shrink-0 ${vehicle.status ? 'text-sage-300 bg-sage-700' : 'bg-cream-700 text-steel-300'}`}
           >
