@@ -11,7 +11,7 @@ const variantMap: Record<TextCustomProps['variant'], ElementType> = {
 
 const variantClass: Record<TextCustomProps['variant'], string> = {
   heading: 'text-xl md:text-2xl font-medium leading-snug',
-  regular: 'text-base md:text-lg leading-relaxed',
+  regular: 'text-base md:text-lg leading-relaxed mt-2',
   small: 'text-sm md:text-base leading-normal',
   button: 'text-sm font-medium leading-none tracking-wide',
 };

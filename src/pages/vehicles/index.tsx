@@ -1,58 +1,35 @@
-import { useState } from 'react';
+import { Link } from 'react-router';
 
-import { Button, Input, Select } from '@/components';
-import Form from '@/components/Form';
-
-const OPTIONS = [
-  { label: 'Option A', value: 'a' },
-  { label: 'Option B', value: 'b' },
-];
+import { mockData } from '@/assets';
+import { Card, TextCustom } from '@/components';
 
 const Vehicles = () => {
-  const [name, setName] = useState('');
-  const [category, setCategory] = useState('');
-  const [errors, setErrors] = useState<{ name?: string; category?: string }>({});
-
-  const validate = () => {
-    const next: typeof errors = {};
-    if (!name.trim()) {
-      next.name = 'Name is required';
-    }
-    if (!category) {
-      next.category = 'Please select a category';
-    }
-    setErrors(next);
-    return Object.keys(next).length === 0;
-  };
-
-  const handleSubmit = () => {
-    if (!validate()) {
-      return;
-    }
-    console.log({ name, category });
-  };
-
   return (
-    <Form onSubmit={handleSubmit}>
-      <Input
-        id='name'
-        label='Name'
-        placeholder='Enter a name'
-        value={name}
-        onChange={setName}
-        error={errors.name}
-      />
-      <Select
-        id='category'
-        label='Category'
-        options={OPTIONS}
-        value={category}
-        onChange={setCategory}
-        placeholder='Select one...'
-        error={errors.category}
-      />
-      <Button text='Submit' variant='secondary' type='submit' />{' '}
-    </Form>
+    <>
+      <div className='text-center mt-4'>
+        <TextCustom text='These are all the vehicles available in our system!' variant='heading' />
+        <TextCustom
+          text='Click on any of the cards to see each vehicle details'
+          variant='regular'
+        />
+      </div>
+      <div className='flex flex-col sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 p-4 sm:gap-4 sm:p-6 lg:p-8 w-full max-w-7xl mx-auto'>
+        {mockData.map((vehicle) => {
+          return (
+            <Link to={`/vehicles/${vehicle.id}`} key={vehicle.id}>
+              <Card
+                vehicle={vehicle}
+                primaryButton={{
+                  text: 'Vehicle Details',
+                  variant: 'muted',
+                  callback: () => {},
+                }}
+              />
+            </Link>
+          );
+        })}
+      </div>
+    </>
   );
 };
 

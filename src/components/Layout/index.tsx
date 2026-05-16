@@ -5,11 +5,11 @@ import Header from '../Header';
 
 const Layout = () => {
   return (
-    <>
+    <main className='bg-steel-100'>
       <Header />
       <Outlet />
       <Footer />
-    </>
+    </main>
   );
 };
 

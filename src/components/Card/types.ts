@@ -1,3 +1,4 @@
+import type { Vehicle } from '../../../public/index';
 import type { ButtonVariant } from '../Button/types';
 
 interface CardButton {
@@ -7,6 +8,7 @@ interface CardButton {
 }
 
 export interface CardProps {
+  vehicle: Vehicle;
   primaryButton?: CardButton;
   secondaryButton?: CardButton;
 }
