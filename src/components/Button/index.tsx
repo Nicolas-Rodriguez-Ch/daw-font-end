@@ -27,13 +27,14 @@ const variantStyles: Record<string, string> = {
   ].join(' '),
 };
 
-const Button = ({ text, variant, callback }: ButtonProps) => {
+const Button = ({ text, variant, callback, disabled = false }: ButtonProps) => {
   return (
     <button
       onClick={callback}
+      disabled={disabled}
       className={[
         'inline-flex items-center justify-center rounded-md',
-        'px-4 py-2 md:px-5 md:py-2.5',
+        'px-4 py-2 md:px-5 md:py-2.5 m-2 md:m-4',
         'transition-all duration-150',
         variantStyles[variant],
       ].join(' ')}

@@ -8,10 +8,10 @@ const variantMap: Record<TextCustomProps['variant'], React.ElementType> = {
 };
 
 const variantClass: Record<TextCustomProps['variant'], string> = {
-  heading: 'font-medium leading-tight',
-  regular: 'leading-relaxed',
-  small: 'leading-normal',
-  button: 'text-sm md:text-base font-medium leading-none tracking-wide',
+  heading: 'text-xl md:text-2xl font-medium leading-snug',
+  regular: 'text-base md:text-lg leading-relaxed',
+  small: 'text-sm md:text-base leading-normal',
+  button: 'text-sm font-medium leading-none tracking-wide',
 };
 
 const TextCustom = ({ text, variant, className = '' }: TextCustomProps) => {
