@@ -3,4 +3,4 @@ export interface TextCustomProps {
   variant: TextCustomVariant;
   className?: string;
 }
-type TextCustomVariant = 'regular' | 'heading' | 'small';
+type TextCustomVariant = 'regular' | 'heading' | 'small' | 'button';
