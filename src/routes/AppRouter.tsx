@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
+import { ToastContainer } from 'react-toastify';
 
 import { Layout } from '@/components';
 
@@ -21,11 +22,14 @@ const renderRoutes = (routes: AppRoute[]) =>
 
 const AppRouter = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>{renderRoutes(ROUTES)}</Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route element={<Layout />}>{renderRoutes(ROUTES)}</Route>
+        </Routes>
+      </BrowserRouter>
+      <ToastContainer theme='dark' />
+    </>
   );
 };
 
