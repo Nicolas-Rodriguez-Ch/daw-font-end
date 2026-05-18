@@ -46,6 +46,11 @@ export default defineConfig([
       eqeqeq: ['warn', 'always'],
       curly: ['warn', 'all'],
       'no-console': ['warn', { allow: ['warn', 'error'] }],
+      'padding-line-between-statements': [
+        'warn',
+        { blankLine: 'always', prev: 'block-like', next: '*' },
+        { blankLine: 'always', prev: '*', next: 'block-like' },
+      ],
     },
     languageOptions: {
       globals: globals.browser,
