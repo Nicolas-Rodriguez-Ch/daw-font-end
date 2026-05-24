@@ -4,8 +4,8 @@ import { useNavigate, useParams } from 'react-router';
 import { toast } from 'react-toastify';
 
 import { Button, Card, TextCustom } from '@/components';
-import { useVehicle } from '@/hooks/useVehicle';
-import { operationService } from '@/services/operationService';
+import { useVehicle } from '@/hooks';
+import { operationService } from '@/services';
 
 import type { Vehicle } from '../../../public/index';
 

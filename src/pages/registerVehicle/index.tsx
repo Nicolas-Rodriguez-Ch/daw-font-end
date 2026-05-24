@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 
 import { Button, Form, Input, Select, TextCustom } from '@/components';
+import { vehicleService } from '@/services';
+
+import type { FormValues } from './types.ts';
 
 const selectOptions = [
   { label: 'Available', value: 'true' },
@@ -10,12 +13,12 @@ const selectOptions = [
 ];
 
 const RegisterVehicle = () => {
-  const [formValue, setFormValues] = useState<Record<string, string>>({
+  const [formValue, setFormValues] = useState<FormValues>({
     vehicleModel: '',
     vehicleBrand: '',
     vehicleAvailability: '',
   });
-  const [errors, setErrors] = useState<Record<string, string>>({
+  const [errors, setErrors] = useState<FormValues>({
     vehicleModel: '',
     vehicleBrand: '',
     vehicleAvailability: '',
@@ -60,12 +63,17 @@ const RegisterVehicle = () => {
       setDisabled(false);
       return;
     } else {
-      const resolveAfter3Sec = new Promise((resolve) => setTimeout(resolve, 3000));
+      const status = formValue.vehicleAvailability === 'true';
+      const registerVehicle = vehicleService.create({
+        brand: formValue.vehicleBrand,
+        model: formValue.vehicleModel,
+        status,
+      });
       await toast
-        .promise(resolveAfter3Sec, {
-          pending: 'Request was sent',
-          success: 'Request has finished',
-          error: 'error during Request',
+        .promise(registerVehicle, {
+          pending: 'Vehicle is being registered!',
+          success: 'Vehicle registered Successfully',
+          error: 'error creating vehicle, please try again later',
         })
         .finally(() => {
           setFormValues({ vehicleModel: '', vehicleBrand: '', vehicleAvailability: '' });

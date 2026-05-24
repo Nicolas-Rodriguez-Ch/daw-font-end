@@ -1,73 +1,77 @@
-# React + TypeScript + Vite
+# DAW Frontend - Vehicle Fleet UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Frontend for a vehicle fleet system built with React, TypeScript, and Vite. The project includes a small design system, a layered architecture, and pages for browsing and administering vehicles.
 
-Currently, two official plugins are available:
+## Highlights
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Mini design system under `src/components` with reusable UI building blocks and typography scales.
+- Feature pages for dashboard, vehicle listing, details, and admin flows (register/update).
+- Clear separation of concerns: API client, services, hooks, routes, pages, and components.
 
-## React Compiler
+## Mini Design System
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Reusable components are centralized in `src/components` and exported through `src/components/index.tsx`.
 
-## Expanding the ESLint configuration
+- **Typography:** `TextCustom` provides `heading`, `regular`, `small`, and `button` variants.
+- **Form controls:** `Input`, `Select`, and `Form` encapsulate validation states and consistent spacing.
+- **UI primitives:** `Button` (variants: `primary`, `secondary`, `muted`) and `Card` for vehicle data.
+- **Layout:** `Layout`, `Header`, `Footer`, and `AdminSidePanel` establish the shell and navigation.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Styling is implemented with Tailwind CSS utility classes and a consistent palette used across components.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Architecture
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+The codebase follows a simple layered structure:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```
+src/
+  api/            # Axios client configuration
+  services/       # API domain services (vehicles, operations)
+  hooks/          # Feature hooks (e.g. useVehicle)
+  components/     # Design system components
+  pages/          # Route-level screens
+  routes/         # Route configuration and router setup
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- **API layer:** `src/api/client.ts` configures Axios with JSON headers.
+- **Services:** `src/services` wraps HTTP calls (e.g. `/ms-vehicles/api/vehicles`).
+- **Hooks:** `src/hooks/useVehicle.ts` provides data fetching and state handling.
+- **Routes:** `src/routes` defines nested routes and the `Layout` shell.
+- **Pages:** `src/pages` contain feature screens.
 
-```js
-// eslint.config.js
-import reactDom from 'eslint-plugin-react-dom';
-import reactX from 'eslint-plugin-react-x';
+Path alias `@/*` maps to `src/*` (configured in `tsconfig.app.json`).
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+## Pages and Routes
+
+Routes are defined in `src/routes/routes.tsx` and rendered by `src/routes/AppRouter.tsx`.
+
+- `/` - Home dashboard (fleet overview metrics)
+- `/vehicles` - Vehicle listing
+- `/vehicles/:id` - Vehicle detail
+- `/admin/register` - Register vehicle
+- `/admin/update/:id` - Update vehicle
+
+## Domain Types
+
+Vehicle types are defined in `public/type.ts` and re-exported from `public/index.ts` for shared usage.
+
+## Tech Stack
+
+- React 19 + TypeScript
+- Vite
+- React Router
+- Axios
+- Tailwind CSS
+- React Toastify
+
+## Scripts
+
+```bash
+npm run dev
+npm run build
+npm run preview
+npm run lint
+npm run lint:fix
+npm run prettier
+npm run prettier:fix
 ```

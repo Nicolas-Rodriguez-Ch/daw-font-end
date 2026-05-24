@@ -1,27 +1,45 @@
-import { mockData } from '@/assets/index';
-import { Button, TextCustom } from '@/components';
-import { vehicleService } from '@/services/vehicleService';
+import { useEffect, useState } from 'react';
+
+import { TextCustom } from '@/components';
+import { vehicleService } from '@/services';
+
+import type { Vehicle } from '../../../public';
 
 const Home = () => {
+  const [vehicleData, setVehicleData] = useState<Vehicle[]>();
+
   const handleFetchVehicles = async () => {
     const { data } = await vehicleService.getAll();
-    console.log('vehicles:', data);
+    return data;
   };
 
-  const totalVehicles = mockData.length;
-  const availableVehicles = mockData.filter((vehicle) => vehicle.status).length;
-  const unavailableVehicles = totalVehicles - availableVehicles;
-  const availabilityPct = totalVehicles ? Math.round((availableVehicles / totalVehicles) * 100) : 0;
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await handleFetchVehicles();
+      setVehicleData(data);
+    };
 
-  const brandCounts = mockData.reduce<Record<string, number>>((acc, vehicle) => {
+    fetchData();
+  }, []);
+
+  const totalVehicles = vehicleData?.length ?? 0;
+  const availableVehicles = vehicleData?.filter((vehicle) => vehicle.status).length ?? 0;
+  const unavailableVehicles =
+    availableVehicles && totalVehicles ? totalVehicles - availableVehicles : 0;
+  const availabilityPct =
+    availableVehicles && totalVehicles ? Math.round((availableVehicles / totalVehicles) * 100) : 0;
+
+  const brandCounts = vehicleData?.reduce<Record<string, number>>((acc, vehicle) => {
     acc[vehicle.brand] = (acc[vehicle.brand] ?? 0) + 1;
     return acc;
   }, {});
 
-  const uniqueBrands = Object.keys(brandCounts).length;
-  const topBrands = Object.entries(brandCounts)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 3);
+  const uniqueBrands = brandCounts ? Object.keys(brandCounts).length : 0;
+  const topBrands = brandCounts
+    ? Object.entries(brandCounts)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 3)
+    : 'None';
 
   return (
     <>
@@ -87,6 +105,10 @@ const Home = () => {
                   variant='small'
                   className='text-steel-300'
                 />
+              ) : topBrands === 'None' ? (
+                <div className='flex items-center justify-between text-sm md:text-base text-steel-200'>
+                  <span>None</span>
+                </div>
               ) : (
                 topBrands.map(([brand, count]) => (
                   <div
@@ -105,9 +127,6 @@ const Home = () => {
               className='text-steel-300'
             />
           </div>
-        </div>
-        <div className='flex justify-center'>
-          <Button text='Fetch all vehicles' variant='primary' callback={handleFetchVehicles} />
         </div>
       </section>
     </>
