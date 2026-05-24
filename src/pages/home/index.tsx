@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { TextCustom } from '@/components';
-import { vehicleService } from '@/services/vehicleService';
+import { vehicleService } from '@/services';
 
 import type { Vehicle } from '../../../public';
 

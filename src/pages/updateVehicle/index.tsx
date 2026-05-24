@@ -4,8 +4,8 @@ import { useNavigate, useParams } from 'react-router';
 import { toast } from 'react-toastify';
 
 import { AdminSidePanel, Button, Form, Input, Select, TextCustom } from '@/components';
-import { useVehicle } from '@/hooks/useVehicle';
-import { vehicleService } from '@/services/vehicleService';
+import { useVehicle } from '@/hooks';
+import { vehicleService } from '@/services';
 
 import type { Vehicle } from '../../../public/index';
 

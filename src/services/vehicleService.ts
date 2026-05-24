@@ -1,5 +1,5 @@
-import { client } from '@/api/client';
-import type { VehiclePayload } from '@/api/types';
+import { client } from '@/api';
+import type { VehiclePayload } from '@/api';
 
 import type { Vehicle } from '../../public/index';
 

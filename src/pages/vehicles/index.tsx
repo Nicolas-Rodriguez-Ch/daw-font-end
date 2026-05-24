@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 
 import { Card, TextCustom } from '@/components';
-import { vehicleService } from '@/services/vehicleService.ts';
+import { vehicleService } from '@/services';
 
 import type { Vehicle } from '../../../public';
 

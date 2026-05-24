@@ -1,5 +1,5 @@
-import { client } from '@/api/client';
-import type { ReservationResponse, VehicleRequest } from '@/api/types';
+import { client } from '@/api';
+import type { ReservationResponse, VehicleRequest } from '@/api';
 
 const BASE = '/ms-operations';
 

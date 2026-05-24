@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 
 import { Button, Form, Input, Select, TextCustom } from '@/components';
-import { vehicleService } from '@/services/vehicleService.ts';
+import { vehicleService } from '@/services';
 
 import type { FormValues } from './types.ts';
 
