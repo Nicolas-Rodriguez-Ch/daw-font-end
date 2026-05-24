@@ -1,5 +1,5 @@
 export type FormValues = {
-  vehicleModel: '';
-  vehicleBrand: '';
-  vehicleAvailability: '';
+  vehicleModel: string;
+  vehicleBrand: string;
+  vehicleAvailability: '' | 'true' | 'false';
 };

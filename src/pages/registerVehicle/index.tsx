@@ -63,7 +63,7 @@ const RegisterVehicle = () => {
       setDisabled(false);
       return;
     } else {
-      const status = formValue.vehicleAvailability === 'Available';
+      const status = formValue.vehicleAvailability === 'true';
       const registerVehicle = vehicleService.create({
         brand: formValue.vehicleBrand,
         model: formValue.vehicleModel,
