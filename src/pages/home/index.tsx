@@ -1,7 +1,13 @@
 import { mockData } from '@/assets/index';
-import { TextCustom } from '@/components';
+import { Button, TextCustom } from '@/components';
+import { vehicleService } from '@/services/vehicleService';
 
 const Home = () => {
+  const handleFetchVehicles = async () => {
+    const { data } = await vehicleService.getAll();
+    console.log('vehicles:', data);
+  };
+
   const totalVehicles = mockData.length;
   const availableVehicles = mockData.filter((vehicle) => vehicle.status).length;
   const unavailableVehicles = totalVehicles - availableVehicles;
@@ -99,6 +105,9 @@ const Home = () => {
               className='text-steel-300'
             />
           </div>
+        </div>
+        <div className='flex justify-center'>
+          <Button text='Fetch all vehicles' variant='primary' callback={handleFetchVehicles} />
         </div>
       </section>
     </>

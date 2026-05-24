@@ -8,4 +8,10 @@ export default defineConfig({
   resolve: {
     alias: { '@': resolve(__dirname, 'src') },
   },
+  server: {
+    proxy: {
+      '/ms-vehicles': 'http://localhost:8762',
+      '/ms-operations': 'http://localhost:8762',
+    },
+  },
 });
